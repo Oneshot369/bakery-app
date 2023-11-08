@@ -1,0 +1,12 @@
+<div class="container" *ngIf="selectProduct == null">
+    <button class="buttonCard"active 
+    *ngFor="let product of products"
+    (click)="selectedProduct(product)">
+        <div class="card">
+            <h1 class="productTitle" >{{product.Name}} | {{product.Qty}} In Stock</h1>
+            <p style="text-wrap: wrap;">Ingredients: <br>{{product.Ingredients}}</p>
+            <p>Calories: {{product.Calories}}</p>
+            <p>Price: {{product.Price}}</p>
+        </div>
+    </button>
+</div>
