@@ -12,15 +12,35 @@ export class ListProductsComponent {
   constructor(private service: BakeryService){
 
   }
+
   products: Product[] = [];
   selectProduct: Product | null = null;
+  newProduct: Product = {
+    ID: 0,
+    Name: '',
+    Calories: 0,
+    Ingredients: '',
+    Price: 0,
+    Qty: 0
+  };
   ngOnInit(){
     this.service.getProducts((productsJson: Product[]) =>{
       this.products = productsJson;
-      console.log(productsJson);
     });
+    this.products.forEach(function (p: Product){console.log(p);});
   }
   selectedProduct(product: Product){
-    console.log(product);
+    console.log("selected Procuct", product);
+    this.selectProduct = product;
+    this.newProduct = this.selectProduct
+  }
+  onSubmit(){
+    console.log("Updated Product", this.newProduct);
+    this.service.updateProducts(this.newProduct, function (){});
+  }
+  deleteProduct(){
+    console.log("Deleting Product", this.newProduct);
+    this.service.deleteProducts(this.newProduct, function (){});
+    location.reload();
   }
 }

@@ -49,6 +49,7 @@ p {
 }
 
 
+
 .productTitle {
     text-align: center;
     padding: 1.5rem 2.5rem;
@@ -56,4 +57,32 @@ p {
     margin: 0 0 2rem 0;
     font-size: 1.5rem;
     color: white;
+}
+.addLabel{
+    text-align: center;
+    align-self: center;
+    align-items: center;
+}
+.form-group{
+    width: 40rem;
+    text-align: center;
+}
+.addForm{
+    align-items: center;
+    align-content: center;
+}
+.upbtn{
+    margin-top: 5px;
+    justify-self: right;
+    background-image: linear-gradient(120deg, #449cee 0%, #7e4af7 100%);
+}
+.delbtn{
+    background-image: linear-gradient(120deg, #ee4485 0%, #f74a4a 100%);
+    border: none;
+    align-self: right;
+}
+.backbtn{
+    background-image: linear-gradient(120deg, #90ee44 0%, #3ca753 100%);
+    border: none;
+    align-self: right;
 }

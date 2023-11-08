@@ -16,4 +16,20 @@ export class BakeryService {
       callback(artists);
     });
   }
+  public updateProducts(product: Product, callback: () => void): void{
+
+    this.http.put<Product[]>(this.host + "/products", product)
+    .subscribe((data) => {
+      console.log("UpdateProductAPI: ",data);
+      callback();
+    });
+  }
+  public deleteProducts(product:Product , callback: () => void): void{
+
+    this.http.delete<Product[]>(this.host + "/products/" + product.ID)
+    .subscribe((data) => {
+      console.log("DeleteProductAPI: ",data);
+      callback();
+    });
+  }
 }

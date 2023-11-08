@@ -10,3 +10,39 @@
         </div>
     </button>
 </div>
+<div *ngIf="selectProduct != null">
+    <h1 class="productTitle">{{selectProduct.Name}}</h1>
+    <div class="container">
+        <br>
+        <form class="addform" (ngSubmit)="onSubmit()" #createForm="ngForm">
+            <div class="form-group">
+              <label class="addLabel" for="Name">Name</label>
+              <input id="Name" type="text" class="form-control" [value]="selectProduct.Name" placeholder="Enter the name of the Product" required [(ngModel)]="newProduct.Name" name="Name">
+            </div>
+            <div class="form-group">
+                <label class="addLabel" for="Calories">Calories</label>
+                <input id="Calories" type="number" class="form-control" [value]="selectProduct.Calories" placeholder="Enter the Calories of the Product" required [(ngModel)]="newProduct.Calories" name="Calories">
+              </div>
+              <div class="form-group">
+                <label class="addLabel" for="Ingredients">Ingredients</label>
+                <textarea id="Ingredients" rows="3" class="form-control" placeholder="Enter each Ingredients" required [(ngModel)]="newProduct.Ingredients" name="Ingredients"></textarea>              </div>
+              <div class="form-group">
+                <label class="addLabel" for="Price">Price</label>
+                <input id="Price" type="number" class="form-control" [value]="selectProduct.Price" placeholder="Enter the Price of the Product" required [(ngModel)]="newProduct.Price" name="Price">
+              </div>
+              <div class="form-group">
+                <label class="addLabel" for="Qty">Qty</label>
+                <input id="Qty" type="number" class="form-control" [value]="selectProduct.Qty" placeholder="Enter the Qty of the Product" required [(ngModel)]="newProduct.Qty" name="Qty">
+              </div>
+            <button type="submit" class="btn btn-primary upbtn">Update</button>
+          </form>
+        </div>
+        <div class="container">
+          <button type="submit" class="btn btn-primary delbtn" (click)="deleteProduct()">Delete</button>
+        </div>
+        <div class="container">
+          <a href="/products">
+            <button type="submit" class="btn btn-primary backbtn" >Back</button>
+          </a>
+        </div>
+</div>
