@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { RouterModule } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
 @NgModule({
   declarations: [
     ListProductsComponent,
+    AddProductComponent,
     AppComponent
   ],
   imports: [

@@ -32,4 +32,11 @@ export class BakeryService {
       callback();
     });
   }
+  public addProduct(product:Product, callback: () => void): void{
+    this.http.post<Product[]>(this.host + "/products", product)
+    .subscribe((data) => {
+      console.log("addProductAPI: ",data);
+      callback();
+    });
+  }
 }
