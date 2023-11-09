@@ -78,11 +78,13 @@ p {
 }
 .delbtn{
     background-image: linear-gradient(120deg, #ee4485 0%, #f74a4a 100%);
+    padding-top: 5px;
     border: none;
     align-self: right;
 }
 .backbtn{
     background-image: linear-gradient(120deg, #90ee44 0%, #3ca753 100%);
+    padding-top: 5px;
     border: none;
     align-self: right;
 }
