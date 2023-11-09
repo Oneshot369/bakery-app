@@ -46,6 +46,12 @@ export class BakeryService {
       callback(users);
     });
   }
+  public userLogin2(user: User, callback: (user: User) => void): void{
+    this.http.post<User>(this.host + "/users/login", user)
+    .subscribe((data) => {
+      callback(data);
+    });
+  }
   public addUser(product:User, callback: () => void): void{
     this.http.post<User[]>(this.host + "/users", product)
     .subscribe((data) => {

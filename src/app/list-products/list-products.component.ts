@@ -27,7 +27,6 @@ export class ListProductsComponent {
     this.service.getProducts((productsJson: Product[]) =>{
       this.products = productsJson;
     });
-    this.products.forEach(function (p: Product){console.log(p);});
   }
   selectedProduct(product: Product){
     console.log("selected Procuct", product);

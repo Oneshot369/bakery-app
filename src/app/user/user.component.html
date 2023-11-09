@@ -1,4 +1,4 @@
-<div *ngIf="!isLoggedIn">
+<div *ngIf="user.ID == -1">
     <h1 class="productTitle">Login</h1>
     <div align="center">
         <br>
@@ -15,10 +15,34 @@
         </form>
     </div>
 </div>
-<div *ngIf="isLoggedIn">
+<div *ngIf="user.ID != -1">
     <h1 class="productTitle">Welcome {{user.FirstName}}</h1>
     <div align="center">
         <br>
         <h2>Your Cart</h2>
+        <div class="container">
+          <div class="buttonCard"
+          *ngFor="let product of user.Cart"
+          (click)="removeFromCart(product)">
+          <div class="card">
+              <h1 class="productTitle2" >{{product.Name}}</h1>
+              <p style="text-wrap: wrap;">Ingredients: <br>{{product.Ingredients}}</p>
+              <p>Calories: {{product.Calories}}</p>
+              <p>Price: {{product.Price}}</p>
+          </div>
+        </div>
     </div>
+    </div>
+    <div class="container">
+      <button class="buttonCard"active
+      *ngFor="let product of products"
+      (click)="addToCart(product)">
+          <div class="card">
+              <h1 class="productTitle" >{{product.Name}} | {{product.Qty}} In Stock</h1>
+              <p style="text-wrap: wrap;">Ingredients: <br>{{product.Ingredients}}</p>
+              <p>Calories: {{product.Calories}}</p>
+              <p>Price: {{product.Price}}</p>
+          </div>
+      </button>
+  </div>
 </div>

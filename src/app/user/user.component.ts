@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../models/users.model';
+import { Product } from '../models/products.model';
 import { BakeryService } from '../service/bakery.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class UserComponent {
   constructor (private service: BakeryService){
 
   }
+  products: Product[] = [];
   user: User = {
-    ID: 0,
+    ID: -1,
     FirstName: '',
     LastName: '',
     Email: '',
@@ -22,28 +24,35 @@ export class UserComponent {
     Password: '',
     Cart: []
   }
-  users: User[] = []
-
+  users: User[] = [];
   login = {
     Username: '',
     Password: ''
   }
   ngOnInit(){
-    this.service.userLogin( (userJson: User[]) =>{
+    this.service.userLogin((userJson: User[]) =>{
       console.log("json",typeof userJson)
       this.users = userJson;
-    }); 
+    });
   }
   onSubmit(){
     console.log("login ",this.login);
     console.log("users ", this.users);
-    console.log("l", this.users)
-    this.users.forEach((u:User) => {
-      if(u.Password == this.login.Password && u.Username == this.login.Username){
-        this.isLoggedIn = true;
-        console.log("user is logged in");
+    this.users.forEach((u:User)=>{
+      if(u.Username == this.login.Username && u.Password == this.login.Password){
+        console.log("Match");
         this.user = u;
       }
+    })
+    console.log("user", this.user.ID);
+    this.service.getProducts((productsJson: Product[]) =>{
+      this.products = productsJson;
     });
+  }
+  removeFromCart(p: Product){
+    console.log(p)
+  }
+  addToCart(p: Product){
+    console.log(p)
   }
 }
