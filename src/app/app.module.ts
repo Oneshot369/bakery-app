@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { RouterModule } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
+import { UserComponent } from './user/user.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 
@@ -14,7 +16,9 @@ import { AddProductComponent } from './add-product/add-product.component';
   declarations: [
     ListProductsComponent,
     AddProductComponent,
-    AppComponent
+    AppComponent,
+    UserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

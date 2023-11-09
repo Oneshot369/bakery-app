@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/products.model';
+import { User } from '../models/users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,19 @@ export class BakeryService {
     this.http.post<Product[]>(this.host + "/products", product)
     .subscribe((data) => {
       console.log("addProductAPI: ",data);
+      callback();
+    });
+  }
+  public userLogin( callback: (user: User[]) => void): void{
+    this.http.get<User[]>(this.host + "/users")
+    .subscribe((users: User[]) => {
+      callback(users);
+    });
+  }
+  public addUser(product:User, callback: () => void): void{
+    this.http.post<User[]>(this.host + "/users", product)
+    .subscribe((data) => {
+      console.log("addUserAPI: ",data);
       callback();
     });
   }

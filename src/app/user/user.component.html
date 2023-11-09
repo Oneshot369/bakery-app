@@ -1,0 +1,24 @@
+<div *ngIf="!isLoggedIn">
+    <h1 class="productTitle">Login</h1>
+    <div align="center">
+        <br>
+        <form class="addform" (ngSubmit)="onSubmit()" #createForm="ngForm">
+            <div class="form-group">
+                <label class="addLabel" for="Name">Username</label>
+                <input id="Name" type="text" class="form-control" placeholder="Enter username" required [(ngModel)]="login.Username" name="Name">
+            </div>
+            <div class="form-group">
+                <label class="addLabel" for="Calories">Password</label>
+                <input id="Calories" type="password" class="form-control" placeholder="Enter password" required [(ngModel)]="login.Password" name="Calories">
+            </div>
+            <button type="submit" class="btn btn-primary upbtn">Login</button>
+        </form>
+    </div>
+</div>
+<div *ngIf="isLoggedIn">
+    <h1 class="productTitle">Welcome {{user.FirstName}}</h1>
+    <div align="center">
+        <br>
+        <h2>Your Cart</h2>
+    </div>
+</div>

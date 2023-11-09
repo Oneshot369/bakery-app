@@ -11,7 +11,7 @@
     </button>
 </div>
 <div *ngIf="selectProduct != null">
-    <h1 class="productTitle">{{selectProduct.Name}}</h1>
+    <h1 class="productTitle" style="border-top: black 1px solid;">{{selectProduct.Name}}</h1>
     <div class="" align="center">
         <br>
         <form class="addform" (ngSubmit)="onSubmit()" #createForm="ngForm">
