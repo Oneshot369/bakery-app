@@ -21,7 +21,7 @@
         <br>
         <h2>Your Cart</h2>
         <div class="container">
-          <div class="buttonCard"
+          <button class="buttonCard"
           *ngFor="let product of user.Cart"
           (click)="removeFromCart(product)">
           <div class="card">
@@ -30,15 +30,16 @@
               <p>Calories: {{product.Calories}}</p>
               <p>Price: {{product.Price}}</p>
           </div>
-        </div>
+        </button>
     </div>
     </div>
+    <h2 align="center">Add Products To Cart</h2>
     <div class="container">
       <button class="buttonCard"active
       *ngFor="let product of products"
       (click)="addToCart(product)">
           <div class="card">
-              <h1 class="productTitle" >{{product.Name}} | {{product.Qty}} In Stock</h1>
+              <h1 class="productTitle2" >{{product.Name}} | {{product.Qty}} In Stock</h1>
               <p style="text-wrap: wrap;">Ingredients: <br>{{product.Ingredients}}</p>
               <p>Calories: {{product.Calories}}</p>
               <p>Price: {{product.Price}}</p>

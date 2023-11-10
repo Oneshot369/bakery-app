@@ -59,4 +59,17 @@ export class BakeryService {
       callback();
     });
   }
+  public deleteFromCart(userID:number, productID: number ,callback: () => void): void{
+    this.http.delete<Product[]>(this.host + "/cart/" + userID + "/" + productID)
+    .subscribe((data) => {
+      callback();
+    });
+  }
+  public addToCart(userID:number, productID: number ,callback: () => void): void{
+    console.log("api added");
+    this.http.put<Product[]>(this.host + "/cart/" + userID + "/" + productID, "")
+    .subscribe((data) => {
+      callback();
+    });
+  }
 }

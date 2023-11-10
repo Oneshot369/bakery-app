@@ -30,29 +30,52 @@ export class UserComponent {
     Password: ''
   }
   ngOnInit(){
-    this.service.userLogin((userJson: User[]) =>{
-      console.log("json",typeof userJson)
-      this.users = userJson;
-    });
+    this.loadUsers();
   }
   onSubmit(){
     console.log("login ",this.login);
     console.log("users ", this.users);
+    this.loadUsers();
+    console.log("user", this.user.ID);
+    this.loaProducts();
+  }
+
+  removeFromCart(p: Product){
+    console.log("Delete", p)
+    this.service.deleteFromCart(this.user.ID, p.ID, () =>{
+      console.log("Deleted");
+    });
+    this.loaProducts();
+    this.loadUsers();
+  }
+  addToCart(p: Product){
+    console.log("added", p)
+    this.service.addToCart(this.user.ID, p.ID, () =>{
+      console.log("Added");
+    });
+    this.loaProducts();
+    this.loadUsers();
+  }
+
+  loaProducts(){
+    this.service.getProducts((productsJson: Product[]) =>{
+      this.products = productsJson;
+    });
+  }
+  checkUser(){
     this.users.forEach((u:User)=>{
       if(u.Username == this.login.Username && u.Password == this.login.Password){
         console.log("Match");
         this.user = u;
       }
     })
-    console.log("user", this.user.ID);
-    this.service.getProducts((productsJson: Product[]) =>{
-      this.products = productsJson;
+  }
+  loadUsers(){
+    this.service.userLogin((userJson: User[]) =>{
+      console.log("json",typeof userJson)
+      this.users = userJson;
     });
-  }
-  removeFromCart(p: Product){
-    console.log(p)
-  }
-  addToCart(p: Product){
-    console.log(p)
+    this.checkUser();
   }
 }
+
